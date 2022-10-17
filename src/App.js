@@ -1,23 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+const comment = [
+  {
+    date: new Date(),
+    text: "I hope you enjoy learning React!",
+    author: {
+      name: "Hello Kitty",
+      avatarUrl: "http://placekitten.com/g/62/62",
+    },
+  },
+  {
+    date: new Date(),
+    text: "I hope you enjoy learning React!",
+    author: {
+      name: "Hello Kitty",
+      avatarUrl: "http://placekitten.com/g/64/64",
+    },
+  },
+  {
+    date: new Date(),
+    text: "I hope you enjoy learning React!",
+    author: {
+      name: "Hello Kitty",
+      avatarUrl: "http://placekitten.com/g/64/64",
+    },
+  },
+];
 
 function App() {
+  const [counter, setCounter] = useState(0);
+  const increment = () => {
+    setCounter(counter + 1);
+  };
+  const decrement = () => {
+    if (counter > 0) {
+      setCounter(counter - 1);
+    }
+    return;
+  };
+  const resetHandler=()=>{
+    setCounter(0)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={increment}>+</button>
+      <button>{counter}</button>
+      <button onClick={decrement}>-</button>
+      <button onClick={resetHandler}>reset</button>
     </div>
   );
 }
